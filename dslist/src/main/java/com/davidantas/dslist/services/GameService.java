@@ -13,23 +13,21 @@ import java.util.List;
 @Service
 public class GameService {
 
-    private GameRepository gameRepository;
+    private final GameRepository gameRepository;
 
     public GameService(GameRepository gameRepository) {
         this.gameRepository = gameRepository;
     }
 
     @Transactional(readOnly = true)
-    public List<GameMinDTO> findAll(){
-        List<Game> result = gameRepository.findAll();
-        List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
-        return dto;
+    public List<GameMinDTO> findAll() {
+        return gameRepository.findAll().stream().map(GameMinDTO::new).toList();
     }
 
     @Transactional(readOnly = true)
     public GameDTO findById(Long id) {
-        Game result = gameRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Game not found with id " + id));
-        return new GameDTO(result);
+        Game game = gameRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Game not found with id " + id));
+        return new GameDTO(game);
     }
 
 }
