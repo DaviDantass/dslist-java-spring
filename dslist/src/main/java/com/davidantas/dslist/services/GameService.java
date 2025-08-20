@@ -3,6 +3,7 @@ package com.davidantas.dslist.services;
 import com.davidantas.dslist.dto.GameDTO;
 import com.davidantas.dslist.dto.GameMinDTO;
 import com.davidantas.dslist.entities.Game;
+import com.davidantas.dslist.projections.GameMinProjection;
 import com.davidantas.dslist.repositories.GameRepository;
 import com.davidantas.dslist.services.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -30,4 +31,9 @@ public class GameService {
         return new GameDTO(game);
     }
 
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinProjection> games = gameRepository.searchByList(listId);
+        return games.stream().map(GameMinDTO::new).toList();
+    }
 }
