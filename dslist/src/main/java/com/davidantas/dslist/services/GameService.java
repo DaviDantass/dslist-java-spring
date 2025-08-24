@@ -13,7 +13,6 @@ import java.util.List;
 
 @Service
 public class GameService {
-
     private final GameRepository gameRepository;
 
     public GameService(GameRepository gameRepository) {
