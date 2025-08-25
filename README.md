@@ -13,6 +13,32 @@ DSList é uma API **Java Spring Boot** que organiza listas de jogos, permitindo 
 ![Maven](https://img.shields.io/badge/Maven-3.9.3-red)
 
 ---
+Perfeito! Aqui está a versão limpa e moderna só da parte de **Como Rodar**, sem comandos de git:
+
+---
+
+## 💻 Como Rodar
+
+Siga os passos para executar a aplicação localmente:
+
+1. **Configure o banco de dados**:
+
+* Para desenvolvimento, edite `src/main/resources/application-dev.properties` com suas credenciais do PostgreSQL.
+* Para testes, use o H2 (`application-test.properties`) já configurado.
+
+2. **Execute a aplicação**:
+
+```bash
+mvn spring-boot:run
+```
+
+3. **Acesse a API**:
+
+```
+http://localhost:8080
+```
+
+---
 
 ## ⚙️ Funcionalidades
 
